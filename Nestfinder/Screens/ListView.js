@@ -8,13 +8,14 @@ import{
     FlatList
 } from "react-native";
 import GridView from 'react-native-super-grid';
-import {rootRef,houseRef} from '../Firebase/firebaseconfig';
+import {houseRef,pictureRef} from '../Firebase/firebaseconfig';
 
 class ListView extends Component{
     constructor(props){
         super(props);
         this.state = ({
            houses: [],
+           pictures: [],
             loading : false,
         });
     }
@@ -26,16 +27,13 @@ class ListView extends Component{
             });
           }
        //   writeUserData(2,'36 Evelyn Wiggins','2500');
-       
+
         houseRef.once('value').then(snapshot => { 
             const houses = [];
             snapshot.forEach(function(child){
                 var obj = child.val();
-                var add = obj.address;
-                var price = obj.price;
                 houses.push(obj); 
             });
-
             this.setState({ houses: houses});
         });   
     }
@@ -63,6 +61,12 @@ class ListView extends Component{
                 <View style = {{height: 130,width :130,
                     marginLeft : 20, borderWidth: 0.5,
                     borderColor: '#dddddd'}} > 
+                      <View style={{flex: 2}}>
+                        <Image source={{uri : item.imageUrl}} 
+                        style={{flex:1, width: null,
+                        height: null, resizeMode: 'cover'}} 
+                        />
+                    </View> 
                     <View style={{flex: 1 , paddingLeft: 10,paddingTop: 10}}>
                             <Text style={{fontWeight:"bold"}}> {item.address} </Text>    
                     </View>

@@ -11,3 +11,7 @@ var config = {
 firebase.initializeApp(config);
 export const rootRef = firebase.database().ref();
 export const houseRef = rootRef.child('houses');
+
+export const pictureRef = firebase.storage();
+
+
