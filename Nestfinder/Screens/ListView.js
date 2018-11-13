@@ -8,25 +8,13 @@ import{
     FlatList
 } from "react-native";
 import GridView from 'react-native-super-grid';
-import * as firebase from 'firebase';
-
-var config = {
-    apiKey: "AIzaSyAtwTUv9Dr608Fv4x7QTcWEfbos-HKyuk8",
-    authDomain: "nestfinder-react-natice.firebaseapp.com",
-    databaseURL: "https://nestfinder-react-natice.firebaseio.com",
-    projectId: "nestfinder-react-natice",
-    storageBucket: "nestfinder-react-natice.appspot.com",
-    messagingSenderId: "502710052203"
-};
-firebase.initializeApp(config);
-const rootRef = firebase.database().ref();
-const houseRef = rootRef.child('houses');
+import {rootRef,houseRef} from '../Firebase/firebaseconfig';
 
 class ListView extends Component{
     constructor(props){
         super(props);
         this.state = ({
-            houses : [],
+           houses: [],
             loading : false,
         });
     }
@@ -38,27 +26,28 @@ class ListView extends Component{
             });
           }
        //   writeUserData(2,'36 Evelyn Wiggins','2500');
-        //var fetchHouses = firebase.database().ref('houses/');
+       
         houseRef.once('value').then(snapshot => { 
-                const houses = [];
+            const houses = [];
             snapshot.forEach(function(child){
                 var obj = child.val();
                 var add = obj.address;
-                houses.push(add);  
+                var price = obj.price;
+                houses.push(obj); 
             });
 
-            this.setState({ houses : houses});
+            this.setState({ houses: houses});
         });   
     }
        
     render(){
-      /* const items = [
+     /* const items = [
             { name: '66 Haynes',imageUri:require('../assets/Images/Houses/house1.jpeg'),price:"$2000"}, 
             { name: '36 Evelyn Wiggins',imageUri:require('../assets/Images/Houses/house2.jpeg'),price:"$2500"},
             { name: '70 Pond Road',imageUri:require('../assets/Images/Houses/house3.jpeg'),price:"$2700"}, 
             { name: '80 Lulu Street',imageUri:require('../assets/Images/Houses/house4.jpeg'),price:"$3000"},
           ]*/
-          const items = this.state.houses;
+         const items = this.state.houses;
        
         return(
            <SafeAreaView style={{flex:1}}>
@@ -75,7 +64,10 @@ class ListView extends Component{
                     marginLeft : 20, borderWidth: 0.5,
                     borderColor: '#dddddd'}} > 
                     <View style={{flex: 1 , paddingLeft: 10,paddingTop: 10}}>
-                            <Text style={{fontWeight:"bold"}}> {item} </Text>    
+                            <Text style={{fontWeight:"bold"}}> {item.address} </Text>    
+                    </View>
+                    <View style={{flex: 1 , paddingLeft: 10}}>
+                            <Text> {item.price} </Text>    
                     </View>
                 </View>
             )}
