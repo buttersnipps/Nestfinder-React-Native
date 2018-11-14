@@ -8,14 +8,13 @@ import{
     FlatList
 } from "react-native";
 import GridView from 'react-native-super-grid';
-import {houseRef,pictureRef} from '../Firebase/firebaseconfig';
+import {houseRef} from '../Firebase/firebaseconfig';
 
 class ListView extends Component{
     constructor(props){
         super(props);
         this.state = ({
-           houses: [],
-           pictures: [],
+            houses: [],
             loading : false,
         });
     }
@@ -26,7 +25,7 @@ class ListView extends Component{
               price: price,
             });
           }
-       //   writeUserData(2,'36 Evelyn Wiggins','2500');
+        // writeUserData(3,'70 Pond Road','4000');
 
         houseRef.once('value').then(snapshot => { 
             const houses = [];
@@ -39,12 +38,6 @@ class ListView extends Component{
     }
        
     render(){
-     /* const items = [
-            { name: '66 Haynes',imageUri:require('../assets/Images/Houses/house1.jpeg'),price:"$2000"}, 
-            { name: '36 Evelyn Wiggins',imageUri:require('../assets/Images/Houses/house2.jpeg'),price:"$2500"},
-            { name: '70 Pond Road',imageUri:require('../assets/Images/Houses/house3.jpeg'),price:"$2700"}, 
-            { name: '80 Lulu Street',imageUri:require('../assets/Images/Houses/house4.jpeg'),price:"$3000"},
-          ]*/
          const items = this.state.houses;
        
         return(
@@ -77,8 +70,6 @@ class ListView extends Component{
             )}
             />
           </SafeAreaView>
-          
-          
         );
     }
 }
