@@ -10,7 +10,7 @@ class Saved extends Component{
     render(){
         return(
             <View style ={styles.container}>
-                <Text>Favaroite</Text>
+                <Text>Favroite</Text>
             </View>
         );
     }

@@ -3,8 +3,10 @@ import{
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    ListView
 } from "react-native";
+
 
 class SingleCardView extends Component{
     render(){

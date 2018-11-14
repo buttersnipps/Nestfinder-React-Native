@@ -7,16 +7,21 @@ import{
     TextInput,
     ScrollView, 
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Dimensions
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Category from './Components/Explore/Categories';
-import ListView from './ListView';
-
+import Home from './Components/Explore/Home';
+import images from '../assets/Image';
+const { height, width } = Dimensions.get('window')
 class Explore extends Component{
+  
     onShowHomeList = () => {
         this.props.navigation.navigate('HomeList');
     }
+
+   
 
     render(){
         return(
@@ -65,6 +70,32 @@ class Explore extends Component{
                                />
                             </ScrollView>
                             </View>
+                            <View style={{marginTop:40,paddingHorizontal:20}}>
+                            <Text style={{fontSize:24 , fontWeight:'700'}} >
+                             Recently added
+                             </Text>
+                             <View style={{width:width-40,height:200,marginTop:20}}>
+                              <Image 
+                              style = {{flex:1,height:null,width:null,resizeMode:'cover',
+                              borderRadius:5,
+                              borderWidth:1,
+                              borderColor:'#dddddd'}}
+                              source = {require('../assets/Images/Houses/house5.jpeg')} />   
+                             </View>
+                            </View>
+                            <View style = {{ marginTop: 40 }}>
+                             <Text style={{fontSize:24 , fontWeight:'700' , paddingHorizontal :20}} >
+                             Houses Near You
+                             </Text>
+                             </View>
+                             <View style = {{paddingHorizontal : 20 ,
+                              marginTop: 20 ,flexDirection:"row",
+                              flexWrap:"wrap",justifyContent:"space-between"}}>
+                                <Home width = {width} source = {images.house6}/>
+                                <Home width = {width} source = {images.house7}/>
+                                <Home width = {width} source = {images.house8}/>
+                                <Home width = {width} source = {images.house9}/>
+                             </View>
                         </View>
                     </ScrollView>
                 </View>

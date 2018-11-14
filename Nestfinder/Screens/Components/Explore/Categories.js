@@ -6,8 +6,6 @@ import{
     StyleSheet,
     Image,
 } from "react-native";
-import ListView from "../../ListView";
-
 
 class Category extends Component{
     render(){
