@@ -5,16 +5,16 @@ import{
     StyleSheet
 } from "react-native";
 
-class AppartmentList extends Component{
+class ApartmentList extends Component{
     render(){
         return(
             <View style ={styles.container}>
-                <Text>Appartment</Text>
+                <Text>Apartment</Text>
             </View>
         );
     }
 }
-export default AppartmentList;
+export default ApartmentList;
 
 const styles = StyleSheet.create({
 

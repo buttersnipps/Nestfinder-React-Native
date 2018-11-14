@@ -65,10 +65,10 @@ class ListView extends Component{
                         />
                     </View> 
                     <View style={{flex: 1 , paddingLeft: 10,paddingTop: 10}}>
-                            <Text style={{fontWeight:"bold"}}> {item.address} </Text>    
+                        <Text style={{fontWeight:"bold" , fontSize :12}}> {item.address} </Text>    
                     </View>
                     <View style={{flex: 1 , paddingLeft: 10}}>
-                            <Text> {item.price} </Text>    
+                            <Text> ${item.price} </Text>    
                     </View>
                 </View>
                 </TouchableOpacity>

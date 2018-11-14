@@ -20,8 +20,11 @@ class Explore extends Component{
     onShowHomeList = () => {
         this.props.navigation.navigate('HomeList');
     }
-    onShowAppartmentList = () =>{
-        this.props.navigation.navigate('AppartmentDetails')
+    onShowApartmentList = () =>{
+        this.props.navigation.navigate('ApartmentDetails')
+    }
+    onShowHomeDetails = () =>{
+        this.props.navigation.navigate('HomeDetails')
     }
     render(){
         return(
@@ -62,7 +65,7 @@ class Explore extends Component{
                                name = "Houses"
                                />
                                </TouchableOpacity>
-                               <TouchableOpacity onPress = {this.onShowAppartmentList.bind()}>
+                               <TouchableOpacity onPress = {this.onShowApartmentList.bind()}>
                                  <Category imageUri={require('../assets/Images/Apartments/app1.jpeg')}
                                name = "Apartment"
                                />
@@ -76,6 +79,7 @@ class Explore extends Component{
                             <Text style={{fontSize:24 , fontWeight:'700'}} >
                              Recently added
                              </Text>
+                             <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
                              <View style={{width:width-40,height:200,marginTop:20}}>
                               <Image 
                               style = {{flex:1,height:null,width:null,resizeMode:'cover',
@@ -84,10 +88,45 @@ class Explore extends Component{
                               borderColor:'#dddddd'}}
                               source = {require('../assets/Images/Houses/house5.jpeg')} />   
                              </View>
+                             </TouchableOpacity>
                             </View>
                             <View style = {{ marginTop: 40 }}>
                              <Text style={{fontSize:24 , fontWeight:'700' , paddingHorizontal :20}} >
                              Houses Near You
+                             </Text>
+                             </View>
+                             <View style = {{paddingHorizontal : 20 ,
+                              marginTop: 20 ,flexDirection:"row",
+                              flexWrap:"wrap",justifyContent:"space-between"}}>
+                              <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
+                                <Home width = {width} source = {images.house6}/>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
+                                <Home width = {width} source = {images.house7}/>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
+                                <Home width = {width} source = {images.house8}/>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
+                                <Home width = {width} source = {images.house9}/>
+                                </TouchableOpacity>     
+                             </View>
+                             <View style = {{ marginTop: 40 }}>
+                             <Text style={{fontSize:24 , fontWeight:'700' , paddingHorizontal :20}} >
+                             Apartments Near You
+                             </Text>
+                             </View>
+                             <View style = {{paddingHorizontal : 20 ,
+                              marginTop: 20 ,flexDirection:"row",
+                              flexWrap:"wrap",justifyContent:"space-between"}}>
+                                <Home width = {width} source = {images.house6}/>
+                                <Home width = {width} source = {images.house7}/>
+                                <Home width = {width} source = {images.house8}/>
+                                <Home width = {width} source = {images.house9}/>
+                             </View>
+                             <View style = {{ marginTop: 40 }}>
+                             <Text style={{fontSize:24 , fontWeight:'700' , paddingHorizontal :20}} >
+                             Rooms Near You
                              </Text>
                              </View>
                              <View style = {{paddingHorizontal : 20 ,

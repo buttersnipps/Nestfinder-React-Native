@@ -8,7 +8,7 @@ import Inbox  from '../Screens/Inbox';
 import Filter  from '../Screens/Filter';
 import ListView from '../Screens/ListView';
 import HomeDetails from '../Screens/Homedetails';
-import AppartmentList from '../Screens/ApartmentList';
+import ApartmentList from '../Screens/ApartmentList';
 
 export const ExploreStack =  createStackNavigator({
   Explore:{
@@ -20,8 +20,8 @@ export const ExploreStack =  createStackNavigator({
   HomeDetails : {
     screen : HomeDetails,
   },
-  AppartmentDetails :{
-    screen : AppartmentList
+  ApartmentDetails :{
+    screen : ApartmentList
   }
 })
 

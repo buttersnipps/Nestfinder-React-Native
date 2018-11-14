@@ -15,8 +15,7 @@ class Home extends Component{
                <Image 
                style = {{flex:1,width:null,height:null,resizeMode:'cover'}}
               // source = {require("../../../assets/Images/Houses/house6.jpeg")} 
-             source = {this.props.source}
-              >
+             source = {this.props.source}>
                </Image>
                </View>
                <View style ={{flex:1 , alignItems:'flex-start', 
@@ -25,7 +24,7 @@ class Home extends Component{
                <Text style = {{fontSize:12 , fontWeight:'bold'}}>North York</Text>
                <Text style = {{fontSize:10 , fontWeight:'bold'}}>$4000</Text>
                </View>
-                </View>
+            </View>
         );
     }
 }
