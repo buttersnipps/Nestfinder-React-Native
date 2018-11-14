@@ -20,9 +20,9 @@ class Explore extends Component{
     onShowHomeList = () => {
         this.props.navigation.navigate('HomeList');
     }
-
-   
-
+    onShowAppartmentList = () =>{
+        this.props.navigation.navigate('AppartmentDetails')
+    }
     render(){
         return(
             <SafeAreaView style={{flex:1}}>
@@ -62,9 +62,11 @@ class Explore extends Component{
                                name = "Houses"
                                />
                                </TouchableOpacity>
+                               <TouchableOpacity onPress = {this.onShowAppartmentList.bind()}>
                                  <Category imageUri={require('../assets/Images/Apartments/app1.jpeg')}
                                name = "Apartment"
                                />
+                               </TouchableOpacity>
                                  <Category imageUri={require('../assets/Images/Rooms/room1.jpeg')}
                                name = "Rooms"
                                />

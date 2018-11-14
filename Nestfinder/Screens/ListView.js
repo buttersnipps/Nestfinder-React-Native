@@ -5,7 +5,7 @@ import{
     StyleSheet,
     Image,
     SafeAreaView,
-    FlatList
+    TouchableOpacity
 } from "react-native";
 import GridView from 'react-native-super-grid';
 import {houseRef} from '../Firebase/firebaseconfig';
@@ -17,6 +17,7 @@ class ListView extends Component{
             houses: [],
             loading : false,
         });
+        
     }
     componentWillMount(){
         function writeUserData(houseId, address, price) {
@@ -36,7 +37,9 @@ class ListView extends Component{
             this.setState({ houses: houses});
         });   
     }
-       
+    onShowHomeDetails = () => {
+        this.props.navigation.navigate('HomeDetails');
+    }
     render(){
          const items = this.state.houses;
        
@@ -51,6 +54,7 @@ class ListView extends Component{
             items={items}
             style={styles.gridView}
             renderItem={(item) => (
+                <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
                 <View style = {{height: 130,width :130,
                     marginLeft : 20, borderWidth: 0.5,
                     borderColor: '#dddddd'}} > 
@@ -67,6 +71,7 @@ class ListView extends Component{
                             <Text> {item.price} </Text>    
                     </View>
                 </View>
+                </TouchableOpacity>
             )}
             />
           </SafeAreaView>
