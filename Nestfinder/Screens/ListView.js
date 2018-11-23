@@ -17,6 +17,7 @@ class ListView extends Component{
             houses: [],
             loading : false,
         });
+       // this.onPress = this.onPress.bind(this);
         
     }
     componentWillMount(){
@@ -37,12 +38,17 @@ class ListView extends Component{
             this.setState({ houses: houses});
         });   
     }
-    onShowHomeDetails = () => {
-        this.props.navigation.navigate('HomeDetails');
+    onShowHomeDetails = (item) => {
+        this.props.navigation.navigate('HomeDetails' , {address : item.address ,
+            price : item.price,
+            imageUrl :item.imageUrl,
+            bedroom : item.bedroom,
+            bathroom : item.bathroom
+        });
     }
     render(){
          const items = this.state.houses;
-       
+      
         return(
            <SafeAreaView style={{flex:1}}>
            <Text style={{fontSize: 24 , fontWeight:'700',
@@ -54,7 +60,7 @@ class ListView extends Component{
             items={items}
             style={styles.gridView}
             renderItem={(item) => (
-                <TouchableOpacity onPress = {this.onShowHomeDetails.bind()}>
+                <TouchableOpacity onPress = { this.onShowHomeDetails.bind(this,item)}>
                 <View style = {{height: 130,width :130,
                     marginLeft : 20, borderWidth: 0.5,
                     borderColor: '#dddddd'}} > 
@@ -65,7 +71,7 @@ class ListView extends Component{
                         />
                     </View> 
                     <View style={{flex: 1 , paddingLeft: 10,paddingTop: 10}}>
-                        <Text style={{fontWeight:"bold" , fontSize :12}}> {item.address} </Text>    
+                        <Text style={{fontWeight:"bold" , fontSize :12}}> {item.address} </Text>  
                     </View>
                     <View style={{flex: 1 , paddingLeft: 10}}>
                             <Text> ${item.price} </Text>    

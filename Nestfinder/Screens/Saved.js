@@ -7,10 +7,17 @@ import{
 } from "react-native";
 
 class Saved extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+        address : props.navigation.getParam('address', '')
+        };
+    }
     render(){
         return(
             <View style ={styles.container}>
                 <Text>Favroite</Text>
+                <Text>{this.state.address}</Text>
             </View>
         );
     }
