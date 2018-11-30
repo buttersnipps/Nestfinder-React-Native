@@ -46,6 +46,7 @@ class ListView extends Component{
             bathroom : item.bathroom
         });
     }
+    
     render(){
          const items = this.state.houses;
       

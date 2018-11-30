@@ -47,8 +47,8 @@ class HomeDetails extends Component{
                             borderRadius:5,
                             borderWidth:1,
                             borderColor:'#dddddd'}}
-                            //source = {{uri : this.state.imageUrl}} 
-                            source = {require('../assets/Images/Houses/house1.jpeg')}
+                            source = {{uri : this.state.imageUrl}} 
+                            //source = {require('../assets/Images/Houses/house1.jpeg')}
                         >
                         <View>
                         <TouchableOpacity onPress={this.onShowFavorite.bind()}>
