@@ -13,7 +13,8 @@ import{
 import GridView from 'react-native-super-grid';
 import Icon from 'react-native-vector-icons/Ionicons'
 import images from '../assets/Image';
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window');
+import * as firebase from 'firebase';
 class HomeDetails extends Component{
     constructor(props){
         super(props);
@@ -26,7 +27,15 @@ class HomeDetails extends Component{
         };
     }
     onShowFavorite = () =>{
-        this.props.navigation.navigate('Saved',{address : this.state.address});
+
+        firebase.database().ref('Liked/').push({
+              address: this.state.address,
+              price: this.state.price,
+              imageUrl:this.state.imageUrl
+        });
+        
+        this.props.navigation.navigate('Saved');
+          
     }
     render(){
 
@@ -99,7 +108,7 @@ class HomeDetails extends Component{
                     </View>
                 </View>
             </View>
-            </ScrollView>
+            </ScrollView>          
             </SafeAreaView>
         );
     }

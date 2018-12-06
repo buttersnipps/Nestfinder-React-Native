@@ -65,14 +65,17 @@ class Explore extends Component{
                                name = "Houses"
                                />
                                </TouchableOpacity>
-                               <TouchableOpacity onPress = {this.onShowApartmentList.bind()}>
+                               <TouchableOpacity onPress = {this.onShowHomeList.bind()}>
                                  <Category imageUri={require('../assets/Images/Apartments/app1.jpeg')}
                                name = "Apartment"
                                />
                                </TouchableOpacity>
-                                 <Category imageUri={require('../assets/Images/Rooms/room1.jpeg')}
+                               <TouchableOpacity onPress = {this.onShowHomeList.bind()}>
+                               <Category imageUri={require('../assets/Images/Rooms/room1.jpeg')}
                                name = "Rooms"
                                />
+                               </TouchableOpacity>
+                              
                             </ScrollView>
                             </View>
                             <View style={{marginTop:40,paddingHorizontal:20}}>

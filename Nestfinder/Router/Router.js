@@ -26,6 +26,9 @@ export const ExploreStack =  createStackNavigator({
   },
   FilterList:{
     screen : FilterList
+  },
+  Saved:{
+    screen : Saved
   }
 })
 

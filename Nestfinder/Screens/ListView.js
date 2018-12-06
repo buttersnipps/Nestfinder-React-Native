@@ -21,14 +21,7 @@ class ListView extends Component{
         
     }
     componentWillMount(){
-        function writeUserData(houseId, address, price) {
-            firebase.database().ref('houses/' + houseId).set({
-              address: address,
-              price: price,
-            });
-          }
-        // writeUserData(3,'70 Pond Road','4000');
-
+        
         houseRef.once('value').then(snapshot => { 
             const houses = [];
             snapshot.forEach(function(child){
