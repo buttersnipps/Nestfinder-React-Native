@@ -7,6 +7,9 @@ import Saved from '../Screens/Saved';
 import Inbox  from '../Screens/Inbox';
 import Filter  from '../Screens/Filter';
 import ListView from '../Screens/ListView';
+import HomeDetails from '../Screens/Homedetails';
+import ApartmentList from '../Screens/ApartmentList';
+import FilterList from '../Screens/FilterList';
 
 export const ExploreStack =  createStackNavigator({
   Explore:{
@@ -14,6 +17,18 @@ export const ExploreStack =  createStackNavigator({
   },
   HomeList:{
     screen : ListView,
+  },
+  HomeDetails : {
+    screen : HomeDetails,
+  },
+  ApartmentDetails :{
+    screen : ApartmentList
+  },
+  FilterList:{
+    screen : FilterList
+  },
+  Saved:{
+    screen : Saved
   }
 })
 

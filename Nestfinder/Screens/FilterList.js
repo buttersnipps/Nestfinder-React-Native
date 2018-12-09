@@ -1,59 +1,43 @@
-
 import React,{Component} from "react";
 import{
     View,
     Text,
     StyleSheet,
-    Image,
     SafeAreaView,
+    Image,
     TouchableOpacity
 } from "react-native";
 import GridView from 'react-native-super-grid';
-import {rootRef,savedRef} from '../Firebase/firebaseconfig';
 
-
-class Saved extends Component{
+class FilterList extends Component{
     constructor(props){
         super(props);
         this.state = ({
-            houses: [],
-            loading : false,
-        });
-       // this.onPress = this.onPress.bind(this);
-        
+           item : this.props.navigation.getParam('items', '')
+        });        
     }
-    componentWillMount(){
-        savedRef.once('value').then(snapshot => { 
-            const houses = [];
-            snapshot.forEach(function(child){
-                var obj = child.val();
-                houses.push(obj); 
-            });
-            this.setState({ houses: houses});
-        });   
-        onShowHomeDetails = (item) => {
-            this.props.navigation.navigate('HomeDetails' , {address : item.address ,
-                price : item.price,
-                imageUrl :item.imageUrl,
-                bedroom : item.bedroom,
-                bathroom : item.bathroom
-            });
-        }
+    onShowHomeDetails = (item) => {
+        this.props.navigation.navigate('HomeDetails' , {address : item.address ,
+            price : item.price,
+            imageUrl :item.imageUrl,
+            bedroom : item.bedroom,
+            bathroom : item.bathroom
+        });
     }
     render(){
-        const items = this.state.houses;
+        var items = this.state.item;
         return(
             <SafeAreaView style={{flex:1}}>
             <Text style={{fontSize: 24 , fontWeight:'700',
                              paddingHorizontal : 20 ,backgroundColor:'white' }}>
-                              Liked by you...
+                              Available Homes near you..
              </Text>
              <GridView
              itemDimension={130}
              items={items}
              style={styles.gridView}
              renderItem={(item) => (
-                 <TouchableOpacity>
+                 <TouchableOpacity onPress = { this.onShowHomeDetails.bind(this,item)}>
                  <View style = {{height: 130,width :130,
                      marginLeft : 20, borderWidth: 0.5,
                      borderColor: '#dddddd'}} > 
@@ -77,9 +61,15 @@ class Saved extends Component{
         );
     }
 }
-export default Saved;
+export default FilterList;
 
 const styles = StyleSheet.create({
+
+container:{
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center'
+},
 gridView: {
     paddingTop: 25,
     flex: 1,
